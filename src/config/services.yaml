@@ -1,0 +1,24 @@
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+    public: false       # Allows optimizing the container by removing unused services; this also means
+    # fetching services directly from the container via $container->get() won't work.
+    # The best practice is to be explicit about your dependencies anyway.
+
+
+  broker_client:
+    class: App\Clients\BrokerClient
+    arguments: ["%broker.url%", "@logger"]
+    public: true
+
+  App\Services\:
+    resource: '../app/Services/*'
+    arguments: ["@broker_client", "@logger", "@configs"]
+    public: true
+
+  request_command:
+    class: App\Commands\RequestCommand
+    arguments: ['@App\Services\RequestService']
+    public: true

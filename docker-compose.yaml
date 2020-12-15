@@ -1,0 +1,9 @@
+version: '3.1'
+
+services:
+  php:
+    build: operations/docker/php-cli
+    volumes:
+      - ./:/var/www/requester
+    command: php ./src/request.php --command request_command
+    restart: on-failure
