@@ -7,7 +7,7 @@ This is the repository that contains the Kafka consumers services
  - [Docker compose](https://docs.docker.com/compose/install/)
  - [Composer](https://getcomposer.org/)
 
-##Before
+## Before
 
 The dependencies of the project need to be satisfied, for that
 if you have composer installed globally run:
